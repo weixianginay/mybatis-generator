@@ -1,0 +1,7 @@
+代码生成说明:
+generator.properties:适配数据库链接以及生成包名
+
+鉴于旧版本生成Model类名与表名的差异性
+① ！！！注意先通过Tools/PdmToTables/pdmCHS2PinYin.exe生成相应适配的类和表的匹配配置
+② 将生成的配置copy到generatorConfig.xml的最后<!--根据PdmToTables生成配置适配-->下方
+③ 通过Maven->Plugins->mybatis-generator->mybatis-generator:generate双击生成

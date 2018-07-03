@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <properties resource="generator.properties"/>
+    <!--mysql 连接数据库jar 这里选择自己本地位置-->
+    <classPathEntry location="${jdbc.driverLocation}"/>
+    <context id="default" defaultModelType="flat">
+        <property name="javaFileEncoding" value="UTF-8"/>
+
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+
+        <!--<commentGenerator type="com.lwl.generator.MyComment">-->
+        <!--</commentGenerator>-->
+
+        <!--分页插件 -->
+        <!--<plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>-->
+        <!--<plugin type="com.lwl.generator.plugins.LikeAFPlugin"></plugin>
+        <plugin type="com.lwl.generator.plugins.NotLikeAFPlugin"></plugin>-->
+        <!--<plugin type="com.lwl.generator.plugins.PaginationPlugin" />-->
+        <!--<commentGenerator type="com.lwl.generator.MyCommentGenerator"/>-->
+
+        <!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
+        <jdbcConnection driverClass="${jdbc.driverClass}" connectionURL="${jdbc.connectionURL}"
+                        userId="${jdbc.userId}" password="${jdbc.password}">
+        </jdbcConnection>
+        <!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 和
+           NUMERIC 类型解析为java.math.BigDecimal -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- targetProject:生成PO类的位置 -->
+        <javaModelGenerator targetPackage="${jdbc.modelLocation}" targetProject="src/main/java">
+           <!-- &lt;!&ndash; enableSubPackages:是否让schema作为包的后缀 &ndash;&gt;
+            <property name="enableSubPackages" value="false"/>
+            &lt;!&ndash; 从数据库返回的值被清理前后的空格 &ndash;&gt;
+            <property name="trimStrings" value="true"/>-->
+        </javaModelGenerator>
+        <!-- targetProject:mapper映射文件生成的位置
+           如果maven工程只是单独的一个工程，targetProject="src/main/java"
+           若果maven工程是分模块的工程，targetProject="所属模块的名称"，例如：
+           targetProject="ecps-manager-mapper"，下同-->
+        <sqlMapGenerator targetPackage="${jdbc.mapperLocation}" targetProject="src/main/java">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <!--<property name="enableSubPackages" value="false"/>-->
+        </sqlMapGenerator>
+        <!-- targetPackage：mapper接口生成的位置 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="${jdbc.daoLocation}" targetProject="src/main/java">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <!--<property name="enableSubPackages" value="false"/>-->
+        </javaClientGenerator>
+        <!-- 指定数据库表 -->
+        <!--*****************************************************************************************-->
+        <!--通配生成数据库中所有表的代码，默认对象名取出下划线，无法具体指定-->
+        <!--<table tableName="%"><property name="useActualColumnNames" value="true"/></table>-->
+        <!--*****************************************************************************************-->
+        <!--如果待生成的表中包含有自增键字段，需要加入指定自增字段的，否则CRUD无法获取自增相关:
+            <generatedKey column="tempRequireNo" sqlStatement="Mysql" identity="true" />-->
+
+        <!--<table tableName="way_invoice" domainObjectName="Invoice"><property name="useActualColumnNames" value="true"/></table>-->
+        <!--<table tableName="way_invoiceWaybill" domainObjectName="InvoiceWaybill"><property name="useActualColumnNames" value="true"/></table>-->
+        <!--<table tableName="messageTimes" domainObjectName="MessageTimes"><property name="useActualColumnNames" value="true"/></table>-->
+        <!--<table tableName="messageTimesUsed" domainObjectName="MessageTimesUsed"><property name="useActualColumnNames" value="true"/></table>-->
+
+
+
+        <!--<table tableName="pay_groupdesc" domainObjectName="GroupDesc"><property name="useActualColumnNames" value="true"/></table>-->
+
+        <!--<table tableName="pay_grouprecharge" domainObjectName="GroupRecharge"><property name="useActualColumnNames" value="true"/></table>-->
+
+        <!--<table tableName="pay_groupwallet" domainObjectName="GroupWallet"><property name="useActualColumnNames" value="true"/></table>-->
+
+
+        <!--<table tableName="car_driver" domainObjectName="Driver" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"><property name="useActualColumnNames" value="true"/></table>-->
+        <!--&lt;!&ndash;*****************************************************************************************&ndash;&gt;-->
+        <!--根据PdmToTables生成配置适配-->
+        <!--通过Pdm中模型直接生成，前提数据库表与模型统一，生成自动携带自增相关的-->
+        <table tableName="COMPANY_NOTICE_PRIORITY" domainObjectName="NoticePriority" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"><property name="useActualColumnNames" value="true"/></table>
+        <table tableName="COMPANY_NOTICE_RALATION" domainObjectName="NoticeRalation" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"><property name="useActualColumnNames" value="true"/></table>
+        <!--<table tableName="COMPANY_NOTICE_TEMPLATE" domainObjectName="CompanyNoticeTemplate" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"><property name="useActualColumnNames" value="true"/></table>-->
+        <!--*****************************************************************************************-->
+
+
+
+    </context>
+</generatorConfiguration>
